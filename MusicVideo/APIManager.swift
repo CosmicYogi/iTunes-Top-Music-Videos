@@ -9,19 +9,19 @@
 import Foundation
 
 class APIManager{
-    func loadData(urlString:String, completion: (result: String) -> Void) -> Void {
+    func loadData(urlString:String, completion: @escaping (_ result: String) -> Void) -> Void {
 
-        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration();
-        let session = NSURLSession(configuration: config);
+        let config = URLSessionConfiguration.ephemeral;
+        let session = URLSession(configuration: config);
         let url = NSURL(string: urlString);
-        let task = session.dataTaskWithURL(url!) { (data, response, error) in
+        let task = session.dataTask(with: url! as URL) { (data, response, error) in
             
-            dispatch_async(dispatch_get_main_queue()){
+            DispatchQueue.main.async {
                 if error != nil{
                     print("error aa gayi hai beta");
-                    completion(result: error!.localizedDescription);
+                    completion(error!.localizedDescription);
                 } else{
-                    completion(result: "NSURLSession successful");
+                    completion("NSURLSession successful");
                     print(data?.description);
                 }
             }

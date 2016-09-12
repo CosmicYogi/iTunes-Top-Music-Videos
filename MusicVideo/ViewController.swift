@@ -13,18 +13,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let apiManager = APIManager();
-        apiManager.loadData("https:www.google.com", completion: loadData);
+        apiManager.loadData(urlString: "https:www.google.com", completion: loadData);
     }
 
     func loadData(data: String) -> Void {
         print(data);
-        let alert = UIAlertController(title: data, message: nil, preferredStyle: .Alert);
+        let alert = UIAlertController(title: data, message: nil, preferredStyle: .alert);
         
-        let okActio = UIAlertAction(title: "OK", style: .Default) { (action) in
+        let okActio = UIAlertAction(title: "OK", style: .default) { (action) in
             
         }
         alert.addAction(okActio);
-        self.presentViewController(alert, animated: true, completion: nil);
+        self.present(alert, animated: true, completion: nil);
     }
 
 
