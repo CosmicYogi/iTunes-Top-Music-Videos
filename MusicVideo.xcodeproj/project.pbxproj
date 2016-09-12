@@ -12,6 +12,7 @@
 		94EA18371D83134700AD0968 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94EA18351D83134700AD0968 /* Main.storyboard */; };
 		94EA18391D83134700AD0968 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94EA18381D83134700AD0968 /* Assets.xcassets */; };
 		94EA183C1D83134700AD0968 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94EA183A1D83134700AD0968 /* LaunchScreen.storyboard */; };
+		94EA18481D843AA000AD0968 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA18471D843AA000AD0968 /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		94EA18381D83134700AD0968 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94EA183B1D83134700AD0968 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94EA183D1D83134700AD0968 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94EA18471D843AA000AD0968 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		94EA18431D8315FE00AD0968 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				94EA18471D843AA000AD0968 /* APIManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94EA18481D843AA000AD0968 /* APIManager.swift in Sources */,
 				94EA18341D83134700AD0968 /* ViewController.swift in Sources */,
 				94EA18321D83134700AD0968 /* AppDelegate.swift in Sources */,
 			);
@@ -298,7 +302,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miteshsoni.MusicVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
+				"SWIFT_VERSION[arch=*]" = 2.3;
 			};
 			name = Debug;
 		};
@@ -311,7 +316,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.miteshsoni.MusicVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
+				"SWIFT_VERSION[arch=*]" = 2.3;
 			};
 			name = Release;
 		};
@@ -334,6 +340,7 @@
 				94EA18421D83134700AD0968 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

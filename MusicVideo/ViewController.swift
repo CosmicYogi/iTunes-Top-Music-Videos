@@ -12,12 +12,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let apiManager = APIManager();
+        apiManager.loadData("https:www.google.com", completion: loadData);
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func loadData(data: String) -> Void {
+        print(data);
+        let alert = UIAlertController(title: data, message: nil, preferredStyle: .Alert);
+        
+        let okActio = UIAlertAction(title: "OK", style: .Default) { (action) in
+            
+        }
+        alert.addAction(okActio);
+        self.presentViewController(alert, animated: true, completion: nil);
     }
 
 
