@@ -13,6 +13,7 @@ class APIManager{
 
         let config = NSURLSessionConfiguration.ephemeralSessionConfiguration();
         let session = NSURLSession(configuration: config);
+
         let url = NSURL(string: urlString);
         let task = session.dataTaskWithURL(url!) { (data, response, error) in
             

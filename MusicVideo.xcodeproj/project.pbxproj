@@ -56,10 +56,10 @@
 		94EA18301D83134700AD0968 /* MusicVideo */ = {
 			isa = PBXGroup;
 			children = (
-				94EA18461D83160C00AD0968 /* Supporting Files */,
-				94EA18451D83160900AD0968 /* Controller */,
-				94EA18441D83160700AD0968 /* View */,
 				94EA18431D8315FE00AD0968 /* Model */,
+				94EA18441D83160700AD0968 /* View */,
+				94EA18451D83160900AD0968 /* Controller */,
+				94EA18461D83160C00AD0968 /* Supporting Files */,
 			);
 			path = MusicVideo;
 			sourceTree = "<group>";
