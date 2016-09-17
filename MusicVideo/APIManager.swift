@@ -15,16 +15,34 @@ class APIManager{
         let session = URLSession(configuration: config);
         let url = NSURL(string: urlString);
         let task = session.dataTask(with: url! as URL) { (data, response, error) in
-            
-            DispatchQueue.main.async {
+            //If I am not wrong here we had used dispatch_adync(dispatch_get_main_queue()) because the session is running in background and when we are using stuff of this closure then we are putting this back to main thread and then doing it.
                 if error != nil{
-                    print("error aa gayi hai beta");
-                    completion(error!.localizedDescription);
+                    DispatchQueue.main.async {
+                        print("error aa gayi hai beta");
+                        completion(error!.localizedDescription);
+                    }
+                    
                 } else{
-                    completion("NSURLSession successful");
-                    print(data?.description);
+                    do{
+                        if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: AnyObject]{
+                            print(json);
+                            let priority = DispatchQueue.global(qos: .userInitiated)
+                            priority.async {
+                                print("priority")
+                                DispatchQueue.main.async {
+                                    completion("JSONSerialization successful");
+                                }
+                            }
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            print("Error had occured while catching");
+                            completion("error occured in NSJSONSerialization");
+                        }
+                        
+                    }
                 }
-            }
+            
 
         }
         task.resume();

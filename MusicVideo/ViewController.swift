@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let apiManager = APIManager();
-        apiManager.loadData(urlString: "https:www.google.com", completion: loadData);
+        apiManager.loadData(urlString: "https://itunes.apple.com/us/rss/topmusicvideos/limit=10/json", completion: loadData);
     }
 
     func loadData(data: String) -> Void {
