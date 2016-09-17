@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94B52B181D8DC6E300A3EED7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B52B171D8DC6E300A3EED7 /* Constants.swift */; };
+		94B52B1A1D8DC6EE00A3EED7 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B52B191D8DC6EE00A3EED7 /* MusicVideo.swift */; };
 		94EA18321D83134700AD0968 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA18311D83134700AD0968 /* AppDelegate.swift */; };
 		94EA18341D83134700AD0968 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EA18331D83134700AD0968 /* ViewController.swift */; };
 		94EA18371D83134700AD0968 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94EA18351D83134700AD0968 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		94B52B171D8DC6E300A3EED7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		94B52B191D8DC6EE00A3EED7 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 		94EA182E1D83134700AD0968 /* MusicVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EA18311D83134700AD0968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94EA18331D83134700AD0968 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		94B52B161D8DC6CE00A3EED7 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				94B52B171D8DC6E300A3EED7 /* Constants.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		94EA18251D83134700AD0968 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +68,7 @@
 		94EA18301D83134700AD0968 /* MusicVideo */ = {
 			isa = PBXGroup;
 			children = (
+				94B52B161D8DC6CE00A3EED7 /* Util */,
 				94EA18461D83160C00AD0968 /* Supporting Files */,
 				94EA18451D83160900AD0968 /* Controller */,
 				94EA18441D83160700AD0968 /* View */,
@@ -85,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				94EA18331D83134700AD0968 /* ViewController.swift */,
+				94B52B191D8DC6EE00A3EED7 /* MusicVideo.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -174,7 +188,9 @@
 			files = (
 				94EA18481D843AA000AD0968 /* APIManager.swift in Sources */,
 				94EA18341D83134700AD0968 /* ViewController.swift in Sources */,
+				94B52B1A1D8DC6EE00A3EED7 /* MusicVideo.swift in Sources */,
 				94EA18321D83134700AD0968 /* AppDelegate.swift in Sources */,
+				94B52B181D8DC6E300A3EED7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
