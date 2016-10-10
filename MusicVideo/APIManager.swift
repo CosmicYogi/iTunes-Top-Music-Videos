@@ -9,7 +9,7 @@
 import Foundation
 
 class APIManager{
-    func loadData(urlString:String, completion: @escaping (_ result: String) -> Void) -> Void {
+    func loadData(urlString:String, completion: @escaping ([Videos]) -> Void) -> Void {
 
         let config = URLSessionConfiguration.ephemeral;
         let session = URLSession(configuration: config);
@@ -18,27 +18,31 @@ class APIManager{
             //If I am not wrong here we had used dispatch_adync(dispatch_get_main_queue()) because the session is running in background and when we are using stuff of this closure then we are putting this back to main thread and then doing it.
                 if error != nil{
                     DispatchQueue.main.async {
-                        print("error aa gayi hai beta");
-                        completion(error!.localizedDescription);
+                        print("error occured in JSON Serialization");
+                        print(error!.localizedDescription);
                     }
                     
                 } else{
                     do{
-                        if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: AnyObject]{
-                            print(json);
-                            let priority = DispatchQueue.global(qos: .userInitiated)
+                        if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSONDictionary, let feed = json["feed"] as? JSONDictionary, let entries = feed["entry"] as? JSONArray{
+                            var videos = [Videos]();
+                            for entry in entries{
+                                let entry = Videos(data: entry as! JSONDictionary);
+                                videos.append(entry);
+                            }
+                            print("iTunes API Manager total count ----> \(videos.count)\n");
+                            let priority = DispatchQueue.global(qos: .userInitiated);
                             priority.async {
-                                print("priority")
                                 DispatchQueue.main.async {
-                                    completion("JSONSerialization successful");
+                                    completion(videos);
                                 }
                             }
+                            
+                        } else{
+                            print("error in parsing");
                         }
                     } catch {
-                        DispatchQueue.main.async {
-                            print("Error had occured while catching");
-                            completion("error occured in NSJSONSerialization");
-                        }
+                        print("error Catched");
                         
                     }
                 }

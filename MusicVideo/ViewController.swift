@@ -16,15 +16,10 @@ class ViewController: UIViewController {
         apiManager.loadData(urlString: "https://itunes.apple.com/us/rss/topmusicvideos/limit=10/json", completion: loadData);
     }
 
-    func loadData(data: String) -> Void {
-        print(data);
-        let alert = UIAlertController(title: data, message: nil, preferredStyle: .alert);
-        
-        let okActio = UIAlertAction(title: "OK", style: .default) { (action) in
-            
+    func loadData(videos: [Videos]) -> Void {
+        for video in videos{
+            print("name = \(video.vName)");
         }
-        alert.addAction(okActio);
-        self.present(alert, animated: true, completion: nil);
     }
 
 
