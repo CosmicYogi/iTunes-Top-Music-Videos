@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(reachabilityStatus);
         let apiManager = APIManager();
         apiManager.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=10/json", completion: loadData);
     }

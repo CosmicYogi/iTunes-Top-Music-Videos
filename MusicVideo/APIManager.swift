@@ -23,16 +23,14 @@ class APIManager{
                 print("error occured in JSON Serialization");
             } else{
                 //JSON Serialization works here
-                print("JSONSerialization started");
-                print(data?.description);
+                //print(data?.description);
                 do{
                     print("reached if let json = try serialization shit");
                     if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? JSONDictionary, feed = json["feed"] as? JSONDictionary, entries = feed["entry"] as? JSONArray{
-                        print("enteries are as follows: \n\(entries)");
+                        //print("enteries are as follows: \n\(entries)");
                         var videos = [Videos]();
                         for entry in entries{
                             let entry = Videos(data: entry as! JSONDictionary)
-                            print("entry chal rahi hai");
                             videos.append(entry);
                         }
                         print("iTunes API Manager total count ----> \(videos.count)\n");
