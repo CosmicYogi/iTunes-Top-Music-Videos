@@ -13,6 +13,8 @@ class MusicVideoTableViewController: UITableViewController {
     var videos = [Videos]();
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "iTunes"
+        navigationItem.titleView?.tintColor = UIColor.white;
         let apiManager = APIManager();
         apiManager.loadData(urlString: "https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: loadData);
     }
