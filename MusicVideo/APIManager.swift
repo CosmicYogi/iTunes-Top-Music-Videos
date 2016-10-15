@@ -26,8 +26,9 @@ class APIManager{
                     do{
                         if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSONDictionary, let feed = json["feed"] as? JSONDictionary, let entries = feed["entry"] as? JSONArray{
                             var videos = [Videos]();
-                            for entry in entries{
+                            for (index, entry) in entries.enumerated(){
                                 let entry = Videos(data: entry as! JSONDictionary);
+                                entry.vRank = index + 1;
                                 videos.append(entry);
                             }
                             print("iTunes API Manager total count ----> \(videos.count)\n");
