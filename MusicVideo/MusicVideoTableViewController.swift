@@ -56,6 +56,7 @@ class MusicVideoTableViewController: UITableViewController {
 
     private struct storyBoard{
         static let cellReusableIdentifier = "cell"
+        static let segueIdentifier = "musicDetail"
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -96,14 +97,16 @@ class MusicVideoTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == storyBoard.segueIdentifier{
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let video = videos[indexPath.row];
+                if let designation = segue.destination as? MusicVideoDetailVC{
+                    designation.videos = video;
+                }
+                
+            }
+        }
     }
-    */
 
 }

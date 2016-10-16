@@ -74,7 +74,7 @@
                                     <outlet property="musicImage" destination="SPG-C9-D4l" id="2EA-IJ-PXI"/>
                                     <outlet property="musicTitle" destination="Kpj-k3-DaV" id="pY5-gX-1rt"/>
                                     <outlet property="rank" destination="OSI-VJ-Vwv" id="td9-2U-FLv"/>
-                                    <segue destination="xRX-et-TCz" kind="show" id="RUB-dz-PQM"/>
+                                    <segue destination="xRX-et-TCz" kind="show" identifier="musicDetail" id="RUB-dz-PQM"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="86" id="Bly-Rz-Kji">
@@ -152,6 +152,13 @@
                             <constraint firstItem="z3j-U4-rjk" firstAttribute="leading" secondItem="Top-lu-eZa" secondAttribute="leading" id="uTc-Jf-32F"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="vGenre" destination="xx3-tC-qZa" id="gz5-ul-ve3"/>
+                        <outlet property="vName" destination="NcR-Ya-r64" id="DaP-cn-s4P"/>
+                        <outlet property="vPrice" destination="11O-jC-fd4" id="PEE-Lm-alO"/>
+                        <outlet property="vRights" destination="09b-q3-cyk" id="SFT-7D-PRh"/>
+                        <outlet property="videoImage" destination="z3j-U4-rjk" id="9DV-Tn-k3V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hxl-WC-Dpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -162,7 +169,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Grn-UF-Egv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VdN-OZ-QLB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="VdN-OZ-QLB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" cocoaTouchSystemColor="darkTextColor"/>
