@@ -33,6 +33,9 @@ class SettingsTVC: UITableViewController {
             if let theValue = UserDefaults.standard.value(forKey: "APICnt") as? Float{
                 APICount.text = "\(Int(theValue))";
                 sliderCount.value = theValue;
+            } else{
+                sliderCount.value = 10.0;
+                APICount.text = "\(Int(sliderCount.value))";
             }
             
             
@@ -50,8 +53,8 @@ class SettingsTVC: UITableViewController {
 
     @IBAction func valueChanged(_ sender: UISlider) {
         let defaults = UserDefaults.standard;
-        defaults.set(Int(sliderCount.value), forKey: "APICnt");
-        APICount.text = "\(sliderCount.value)";
+        defaults.set(Int(Int(sliderCount.value)), forKey: "APICnt");
+        APICount.text = "\(Int(sliderCount.value))";
     }
     func preferredFontChanged(){
         aboutDisplay.font = UIFont.preferredFont(forTextStyle: .subheadline);

@@ -11,12 +11,11 @@ import UIKit
 class MusicVideoTableViewController: UITableViewController {
 
     var videos = [Videos]();
+    var limit = 10;
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "iTunes"
-        navigationItem.titleView?.tintColor = UIColor.white;
-        let apiManager = APIManager();
-        apiManager.loadData(urlString: "https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: loadData);
+
+        runAPI();
     }
 
     func loadData(videos: [Videos]) -> Void {
@@ -24,13 +23,32 @@ class MusicVideoTableViewController: UITableViewController {
         for video in videos{
             print("name = \(video.vName)");
         }
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.cyan];
+        title = "iTunes top \(limit) videos";
         tableView.reloadData();
     }
     
-    func runAPI(){
-        let api = APIManager();
-        api.loadData(urlString: "https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: loadData)
+    func getApiCount(){
+        if UserDefaults.standard.object(forKey: "APICnt") != nil{
+            let theValue = UserDefaults.standard.object(forKey: "APICnt") as! Int;
+            self.limit = theValue;
+        }
+        let formatter = DateFormatter();
+        formatter.dateFormat = "E, dd MM YYYY HH:MM:SS";
+        let refreshDate = formatter.string(from: NSDate() as Date);
+        refreshControl?.attributedTitle = NSAttributedString(string: "\(refreshDate)" );
     }
+    func runAPI(){
+        getApiCount();
+        let api = APIManager();
+        api.loadData(urlString: "https://itunes.apple.com/us/rss/topmusicvideos/limit=\(limit)/json", completion: loadData)
+    }
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        refreshControl?.endRefreshing();
+        runAPI();
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
