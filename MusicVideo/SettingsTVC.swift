@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class SettingsTVC: UITableViewController {
+class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var aboutDisplay: UILabel!
     @IBOutlet weak var feedbackDisplay: UILabel!
@@ -69,6 +70,51 @@ class SettingsTVC: UITableViewController {
         dragTheSliderDisplay.font = UIFont.preferredFont(forTextStyle: .footnote);
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == 0 && indexPath.row == 1) {
+            let mailViewController = configureMail();
+            //CHECKING THAT IF THERE IS AN eMAIL ACCOUNT SETUP ON THE DEVICE, THIS IS VERY IMPORTANT BECAUSE APP WILL CRASH IF eMAIL ACCOUNT IS NOT SETUP AND APPLE WILL REJECT THE APP.
+            if MFMailComposeViewController.canSendMail(){
+                self.present(mailViewController, animated: true, completion: nil);
+            } else{
+                mailAlert();
+            }
+            tableView.deselectRow(at: indexPath, animated: true);
+        }
+    }
+    
+    func configureMail() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController();
+        mailComposerVC.mailComposeDelegate = self;
+        mailComposerVC.setToRecipients(["mitesh_soni@rocketmail.com"]);
+        mailComposerVC.setSubject("Music Video App Feedback");
+        mailComposerVC.setMessageBody("Hi Mitesh,\n\nI would like to share the following feedback with you.\n", isHTML: false);
+        return mailComposerVC;
+    }
+    
+    func mailAlert(){
+        let alertController : UIAlertController = UIAlertController(title: "Alert", message: "No eMail account setup on iPhone", preferredStyle: .alert);
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil);
+        alertController.addAction(okAction);
+        self.present(alertController, animated: true, completion: nil);
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result.rawValue {
+        case MFMailComposeResult.cancelled.rawValue:
+            print("cancelled");
+        case MFMailComposeResult.failed.rawValue:
+            print("Failed");
+        case MFMailComposeResult.saved.rawValue:
+            print("Saved");
+        case MFMailComposeResult.sent.rawValue:
+            print("Sent");
+        default:
+            print("Unknown error");
+        }
+        self.dismiss(animated: true, completion: nil);
+    }
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil);
     }
