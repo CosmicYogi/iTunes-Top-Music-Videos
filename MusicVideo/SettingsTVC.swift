@@ -17,6 +17,8 @@ class SettingsTVC: UITableViewController {
     @IBOutlet weak var bestImageDisplay: UILabel!
     @IBOutlet weak var APICount: UILabel!
     @IBOutlet weak var sliderCount: UISlider!
+    @IBOutlet weak var numberOfMusicVideosDisplay: UILabel!
+    @IBOutlet weak var dragTheSliderDisplay: UILabel!
     
     
     
@@ -62,6 +64,9 @@ class SettingsTVC: UITableViewController {
         securityDisplay.font = UIFont.preferredFont(forTextStyle: .subheadline);
         bestImageDisplay.font = UIFont.preferredFont(forTextStyle: .subheadline);
         APICount.font = UIFont.preferredFont(forTextStyle: .subheadline);
+        
+        numberOfMusicVideosDisplay.font = UIFont.preferredFont(forTextStyle: .subheadline);
+        dragTheSliderDisplay.font = UIFont.preferredFont(forTextStyle: .footnote);
     }
     
     deinit {
