@@ -20,6 +20,7 @@ class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var sliderCount: UISlider!
     @IBOutlet weak var numberOfMusicVideosDisplay: UILabel!
     @IBOutlet weak var dragTheSliderDisplay: UILabel!
+    @IBOutlet weak var bestImageQuality: UISwitch!
     
     
     
@@ -31,7 +32,7 @@ class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(SettingsTVC.preferredFontChanged), name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil);
         touchID.isOn = UserDefaults.standard.bool(forKey: "SecSetting");
-        
+        bestImageQuality.isOn = UserDefaults.standard.bool(forKey: UserDefaultConstants.bestImageQuality);
         if UserDefaults.standard.value(forKey: "APICnt") != nil{
             if let theValue = UserDefaults.standard.value(forKey: "APICnt") as? Float{
                 APICount.text = "\(Int(theValue))";
@@ -54,6 +55,16 @@ class SettingsTVC: UITableViewController, MFMailComposeViewControllerDelegate {
         }
     }
 
+    @IBAction func bestImageQualityAction(_ sender: UISwitch) {
+        let defaults = UserDefaults.standard;
+        if bestImageQuality.isOn{
+            defaults.set(true, forKey: UserDefaultConstants.bestImageQuality);
+        } else{
+            defaults.set(false, forKey: UserDefaultConstants.bestImageQuality);
+        }
+    }
+    
+    
     @IBAction func valueChanged(_ sender: UISlider) {
         let defaults = UserDefaults.standard;
         defaults.set(Int(Int(sliderCount.value)), forKey: "APICnt");
