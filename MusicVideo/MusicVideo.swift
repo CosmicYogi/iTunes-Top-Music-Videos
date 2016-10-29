@@ -79,7 +79,11 @@ class Videos {
         }
         
         if let imageURL = data["im:image"] as? [AnyObject], let vImageURL = imageURL[2] as? JSONDictionary, let label = vImageURL["label"] as? String{
-            self._vImageURL = label.replacingOccurrences(of: "100x100", with: "600x600");
+            if UserDefaults.standard.bool(forKey: UserDefaultConstants.bestImageQuality) == true{
+                self._vImageURL = label.replacingOccurrences(of: "100x100", with: "600x600");
+            } else{
+                self._vImageURL = label.replacingOccurrences(of: "100x100", with: "120x120");
+            }
         } else{
             self._vImageURL = "";
         }
