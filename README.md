@@ -9,5 +9,23 @@ Touch ID - Weather to ask for touch ID if user is sharing video details with som
 
 ##ScreenShots
 
-##Home Screen
-![Home Screen](./Screenshots/Home.png =250x)
+##Home
+![Home](./Screenshots/Home.png)
+
+##Detail
+![Detail](./Screenshots/Detail.png)
+
+##Playing
+![Playing](./Screenshots/Play.png)
+
+##TouchID
+![Touch ID](./Screenshots/TouchID.png)
+
+##Share
+![Share](./Screenshots/Share.png)
+
+##About
+![About](./Screenshots/About.png)
+
+##Feedback
+![Feedback](./Screenshots/Feedback.png)
