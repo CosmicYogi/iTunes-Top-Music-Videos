@@ -10,8 +10,8 @@ import UIKit
 
 class MusicVideoTableViewController: UITableViewController, UISearchResultsUpdating {
 
-    var videos = [Videos]();
-    var filterSearch = [Videos]();
+    var videos = [Video]();
+    var filterSearch = [Video]();
     var resultSearchController = UISearchController(searchResultsController: nil);
     
     var limit = 10;
@@ -21,7 +21,7 @@ class MusicVideoTableViewController: UITableViewController, UISearchResultsUpdat
         runAPI();
     }
 
-    func loadData(videos: [Videos]) -> Void {
+    func loadData(videos: [Video]) -> Void {
         self.videos = videos;
         for video in videos{
             print("name = \(video.vName)");
@@ -109,7 +109,7 @@ class MusicVideoTableViewController: UITableViewController, UISearchResultsUpdat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == storyBoard.segueIdentifier{
             if let indexPath = tableView.indexPathForSelectedRow{
-                let video : Videos;
+                let video : Video;
                 if (resultSearchController.isActive){
                     video = filterSearch[indexPath.row];
                 } else{

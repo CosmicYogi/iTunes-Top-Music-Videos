@@ -10,7 +10,7 @@ import UIKit
 
 class MusicVideoTableViewCell: UITableViewCell {
 
-    var video : Videos?{
+    var video : Video?{
         didSet {
             updateCell();
         }
@@ -47,7 +47,7 @@ class MusicVideoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func getVideoImage(video: Videos, imageView: UIImageView){
+    func getVideoImage(video: Video, imageView: UIImageView){
         let priority = DispatchQueue.global(qos: .userInitiated);
         priority.async {
             let data = NSData(contentsOf: URL(string: video.vImageURL)!);
